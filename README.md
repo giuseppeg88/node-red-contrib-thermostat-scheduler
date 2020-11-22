@@ -1,44 +1,95 @@
-# NEST style thermostat with temperature week scheduler
-Dashboard widget for Node-RED - Hass.io Ready
+# The Ultimate Node-RED Thermostat for Home Assistant
+NEST style thermostat with: temperature week schedule, countdown and manual mode
 
 ## Original projects
 This project is an integration of these:
 * [NEST style thermostat Dashboard widget for Node-red](https://github.com/automatikas/Node-red-Nest-thermostat)
 * [A Thermostat Weekend](https://tech.scargill.net/tag/a-node-red-dashboard-thermostat-in-the-making/)
 * [Temperature/ON-OFF Week Scheduler UI-Template Node-Red Dashboard](https://flows.nodered.org/flow/65f411e9e37745a4bbeef5926d052c97)
+* [TOP 3 Countdown Timer](https://flows.nodered.org/flow/dcb466d43d639ca300157c5939b43d7e)
+* [node-red-contrib-mytimeout](https://flows.nodered.org/node/node-red-contrib-mytimeout)
 
-## Screenshots
-### Off:
-![Screenshot image_01](images/Nest_off.PNG)
-
-### On:
-![Screenshot image_02](images/Nest_on.PNG)
-
-### Heat:
-![Screenshot image_03](images/Nest_heat.PNG)
-
-### Away:
-![Screenshot image_04](images/Nest_away.PNG)
-
-### Scheduler:
-![Screenshot image_05](images/Scheduler.PNG)
-
-## How to install
-Download the file flow.json, then go to your node-red application and press **`import`** > **`cliboard`** and finally select the file saved.
-
-## How to use
-Modify the following nodes configuring the data source (ex: Home Assistant server):
-* Climate
-* Away from Alarm
-* svc: climate:set_temperature
-* svc: climate:turn_off
-* svc: climate:turn_on
+## Demo
+![DemoEN gif 01](screenshots/demoEN.gif)
 
 ## Features
-* Thermostat status: OFF, ON with target temperature, Heat, Away mode (limits the maximum temperature) 
-* Thermostat control: Off or On by scheduler
-* Week Scheduler
+This widget allows you to control the **climate** element of the **Home Assistant**, expanding its functionality.
 
-## TODO
-* Manual and countdown modes
-* Improve the graphics component (currently: only horizontal and with problems in resizing)
+* Three different options for setting up the thermostat:
+  * Week Scheduler (with Away mode)
+  * Countdown
+  * Manual
+* State report through a NEST style thermostat:
+  * OFF
+  * ON 
+    * Idle
+    * Heat
+    * Away mode (that limits the maximum temperature) 
+* Chart
+
+## Screenshots
+### Home:
+![Screenshot home 01](screenshots/home.png)
+
+### Week Scheduler:
+![Screenshot scheduler 01](screenshots/home_scheduler.png)
+
+![Screenshot scheduler 02](screenshots/scheduler.png)
+
+### Countdown:
+![Screenshot countdown 01](screenshots/home_countdown.png)
+
+![Screenshot countdown 02](screenshots/countdown.png)
+
+### Manual:
+![Screenshot manual 01](screenshots/home_manual.png)
+
+### State report:
+#### Off:
+![Screenshot state 01](screenshots/Nest_off.PNG)
+
+#### On:
+![Screenshot state 02](screenshots/Nest_on.PNG)
+
+#### Heat:
+![Screenshot state 03](screenshots/Nest_heat.PNG)
+
+#### Away:
+![Screenshot state 04](screenshots/Nest_away.PNG)
+
+### Chart:
+![Screenshot chart 01](screenshots/chart.png)
+
+## How to install
+1. Install [*node-red-contrib-mytimeout*](https://flows.nodered.org/node/node-red-contrib-mytimeout) 
+
+2. Download the flow, then go to your node-red application and press **`import`** > **`cliboard`** and finally select the file downloaded.
+   Two versions available:
+   * [flowEN.json](flowEN.json) --> English language
+   * [flowIT.json](flowIT.json) --> Italian language
+
+3. Modify the *Properties* **Server** (ex: Home Assistant) and **Entity Id** (ex: climate.termostato) of the following nodes:
+   * Climate
+   * Away from Alarm
+   * svc: climate:set_temperature
+   * svc: climate:turn_off
+   * svc: climate:turn_on
+
+   These nodes are highlighted in the flow by the comment *"Set this"* (![set_this image](screenshots/set_this.png)).
+
+4. Deploy and enjoy!
+
+## Changelog
+### v3.0
+* Improve the user interface
+* Add Countdown mode
+* Add Manual mode
+* Add Chart
+* Implement 0.1 degree steps in the NEST style thermostat
+
+### v1.0
+Initial commit
+
+## Potential future improvements
+* Schedule mode with 0.1 degree steps
+* Improve the graphics component (currently: only horizontal and no-resizing)
