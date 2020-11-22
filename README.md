@@ -80,6 +80,10 @@ This widget allows you to control the **climate** element of the **Home Assistan
 4. Deploy and enjoy!
 
 ## Changelog
+
+### v3.1
+* Fix countdown_followed_by
+
 ### v3.0
 * Improve the user interface
 * Add Countdown mode
