@@ -1,5 +1,5 @@
 # The Ultimate Node-RED Thermostat for Home Assistant
-NEST style thermostat with: temperature week schedule, countdown and manual mode
+NEST style thermostat with: temperature week scheduler, countdown and manual mode
 
 ## Original projects
 This project is an integration of these:
