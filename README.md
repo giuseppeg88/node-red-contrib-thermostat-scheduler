@@ -46,16 +46,16 @@ This widget allows you to control the **climate** element of the **Home Assistan
 
 ### State report:
 #### Off:
-![Screenshot state 01](screenshots/Nest_off.PNG)
+![Screenshot state 01](screenshots/Nest_off.png)
 
 #### On:
-![Screenshot state 02](screenshots/Nest_on.PNG)
+![Screenshot state 02](screenshots/Nest_on.png)
 
 #### Heat:
-![Screenshot state 03](screenshots/Nest_heat.PNG)
+![Screenshot state 03](screenshots/Nest_heat.png)
 
 #### Away:
-![Screenshot state 04](screenshots/Nest_away.PNG)
+![Screenshot state 04](screenshots/Nest_away.png)
 
 ### Chart:
 ![Screenshot chart 01](screenshots/chart.png)
