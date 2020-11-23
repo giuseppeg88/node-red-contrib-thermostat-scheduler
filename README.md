@@ -61,7 +61,7 @@ This widget allows you to control the **climate** element of the **Home Assistan
 ![Screenshot chart 01](screenshots/chart.png)
 
 ## How to install
-1. Install [*node-red-contrib-mytimeout*](https://flows.nodered.org/node/node-red-contrib-mytimeout) 
+1. Install [*node-red-contrib-mytimeout*](https://flows.nodered.org/node/node-red-contrib-mytimeout) & [*node-red-contrib-moment*](https://flows.nodered.org/node/node-red-contrib-moment)
 
 2. Download the flow, then go to your node-red application and press **`import`** > **`cliboard`** and finally select the file downloaded.
    Two versions available:
