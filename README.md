@@ -81,7 +81,7 @@ This widget allows you to control the **climate** element of the **Home Assistan
 
 ## Known Bugs
 Refer to the [*issues section*](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues) and please report any issues you have.
-* [**Text color incorrect with light theme**](#5): Until the problem is resolved, I recommend that you configure the [*dark theme*](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues/5#issuecomment-735254828).
+* [**Text color incorrect with light theme**](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues/5): Until the problem is resolved, I recommend that you configure the [*dark theme*](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues/5#issuecomment-735254828).
  
 
 ## Changelog
