@@ -85,6 +85,11 @@ Refer to the [*issues section*](https://github.com/giuseppeg88/node-red-contrib-
  
 
 ## Changelog
+### v3.3
+* Fix "Messy graphic" in the first startup (#3)
+* Align the time zone settings used in the nodes (#13)
+* Fix a minor countdown bug
+
 ### v3.2
 * Fix "change state" in countdown
 
