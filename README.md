@@ -80,9 +80,13 @@ This widget allows you to control the **climate** element of the **Home Assistan
 4. Deploy and enjoy!
 
 ## Known Bugs
+**(!!!) There is a UI bug in the Node-RED release 1.2.7 (Home Assistant Addon v8.0.1): [UI dropdown - Unable to set a preselected option](https://github.com/node-red/node-red/issues/2852)**
+
 Refer to the [*issues section*](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues) and please report any issues you have.
 * [**Text color incorrect with light theme**](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues/5): Until the problem is resolved, I recommend you to configure the [*dark theme*](https://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler/issues/5#issuecomment-735254828).
- 
+
+
+
 
 ## Changelog
 ### v3.3
