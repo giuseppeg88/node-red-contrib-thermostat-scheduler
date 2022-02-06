@@ -89,6 +89,9 @@ Refer to the [*issues section*](https://github.com/giuseppeg88/node-red-contrib-
 
 
 ## Changelog
+### v3.4
+* Use "let" instead of "var" to work with Node-Red 2.2
+
 ### v3.3
 * Fix "Messy graphic" in the first startup (#3)
 * Align the time zone settings used in the nodes (#13)
