@@ -140,16 +140,16 @@
         ]
     },
     {
-        "id": "b53c1f70.8e70f",
+        "id": "c7e7982a.89e5f8",
         "type": "tab",
-        "label": "The Ultimate Thermostat v3.3 ITA - giuseppeg88",
+        "label": "The Ultimate Thermostat v3.4 ITA - giuseppeg88",
         "disabled": false,
         "info": "GitHub:\nhttps://github.com/giuseppeg88/node-red-contrib-thermostat-scheduler\n\nLICENSE:\nGNU General Public License v3.0\nPermissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights."
     },
     {
-        "id": "8cc0409c.e3cf6",
+        "id": "b5b4d03.75d053",
         "type": "ui_template",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "77b849cb.094c08",
         "name": "css etc",
         "order": 3,
@@ -167,15 +167,15 @@
         ]
     },
     {
-        "id": "8e66ea98.c308e8",
+        "id": "a0aab4d8.8b6498",
         "type": "ui_template",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "77b849cb.094c08",
         "name": "Settings page",
         "order": 1,
         "width": 8,
         "height": 5,
-        "format": "<script>\nvar thedays=[\"DOMENICA\",\"LUNEDI\",\"MARTEDI\",\"MERCOLEDI\",\"GIOVEDI\",\"VENERDI\",\"SABATO\"];\nvar ID = \"AA\";\n\nvar last=29;\n\nfunction bar(mm,val)\n{\nif (val==12 || val==12.5) { $(mm).height(\"12%\"); $(mm).css('background-color', '#1E88E5'); } //blue\nif (val==13 || val==13.5) { $(mm).height(\"16%\"); $(mm).css('background-color', '#039BE5'); }\nif (val==14 || val==14.5) { $(mm).height(\"20%\"); $(mm).css('background-color', '#00ACC1'); } \nif (val==15 || val==15.5) { $(mm).height(\"24%\"); $(mm).css('background-color', '#039BE5'); } // cyan\nif (val==16 || val==16.5) { $(mm).height(\"28%\"); $(mm).css('background-color', '#00ACC1'); }\nif (val==17 || val==17.5) { $(mm).height(\"32%\"); $(mm).css('background-color', '#00897B'); } \nif (val==18 || val==18.5) { $(mm).height(\"36%\"); $(mm).css('background-color', '#388E3C'); } // green\nif (val==19 || val==19.5) { $(mm).height(\"40%\"); $(mm).css('background-color', '#689F38'); }\nif (val==20 || val==20.5) { $(mm).height(\"44%\"); $(mm).css('background-color', '#C0CA33'); }\nif (val==21 || val==21.5) { $(mm).height(\"48%\"); $(mm).css('background-color', '#FDD835'); } // yellow\nif (val==22 || val==22.5) { $(mm).height(\"52%\"); $(mm).css('background-color', '#FBC02D'); }\nif (val==23 || val==23.5) { $(mm).height(\"56%\"); $(mm).css('background-color', '#FFA000'); }\nif (val==24) { $(mm).height(\"60%\"); $(mm).css('background-color','#E64A19'); } // red\n}\n\n//function bar(mm,val)\n//{\n//if (val==14 || val==14.5) { $(mm).height(\"12%\"); $(mm).css('background-color', '#1E88E5'); } //blue\n//if (val==15 || val==15.5) { $(mm).height(\"16%\"); $(mm).css('background-color', '#039BE5'); }\n//if (val==16 || val==16.5) { $(mm).height(\"20%\"); $(mm).css('background-color', '#00ACC1'); } \n//if (val==17 || val==17.5) { $(mm).height(\"24%\"); $(mm).css('background-color', '#039BE5'); } // cyan\n//if (val==18 || val==18.5) { $(mm).height(\"28%\"); $(mm).css('background-color', '#00ACC1'); }\n//if (val==19 || val==19.5) { $(mm).height(\"32%\"); $(mm).css('background-color', '#00897B'); } \n//if (val==20 || val==20.5) { $(mm).height(\"36%\"); $(mm).css('background-color', '#388E3C'); } // green\n//if (val==21 || val==21.5) { $(mm).height(\"40%\"); $(mm).css('background-color', '#689F38'); }\n//if (val==22 || val==22.5) { $(mm).height(\"44%\"); $(mm).css('background-color', '#C0CA33'); }\n//if (val==23 || val==23.5) { $(mm).height(\"48%\"); $(mm).css('background-color', '#FDD835'); } // yellow\n//if (val==24 || val==24.5) { $(mm).height(\"52%\"); $(mm).css('background-color', '#FBC02D'); }\n//if (val==25 || val==25.5) { $(mm).height(\"56%\"); $(mm).css('background-color', '#FFA000'); }\n//if (val==26) { $(mm).height(\"60%\"); $(mm).css('background-color','#E64A19'); } // red\n//}\n\nfunction stat(text)\n{\n$(\"#info\"+ID).text(text);\nvar tm=setTimeout(function(){ $(\"#info\"+ID).text(\"Ok\"); clearTimeout(tm);}, 3000);\n}\n\nfunction selec(val,sta)\n{\nvar w=\"#td\"+val+ID;\n if (sta) $(w).css('background-color','#4CAF50'); else $(w).css('background-color','#FFC107');\n}\n\n    (function(scope){\n        scope.ID = ID;\n        scope.send({payload: '29'})\n        scope.$watch('msg', function(msg) {\n            selec(last,0); last=msg.selector; selec(last,1);\n            for (var x=0; x<24; x++) \n                { \n                    var w=\"#t\"+x+ID; bar(w,msg.timing[((msg.days-1)*24)+x].toFixed(1)); \n                    var v=\"#v\"+x+ID; $(v).text(msg.timing[((msg.days-1)*24)+x].toFixed(1)+\"°\")\n                } \n            for (var x=0; x<2; x++) { var w=\"#s\"+x+ID; $(w).text(msg.timing[168+x].toFixed(1)+\"°\"); }\n             $(\"#d0\"+ID).text(thedays[msg.days-1]);\n             if ((last>4) &&(last<29))\n                 $(\"#current\"+ID).text(msg.timing[((msg.days-1)*24)+last-5].toFixed(1) + \"°\");\n             else\n                 $(\"#current\"+ID).text(\"-\");\n                 \n            if (msg.foryou!=\"\") { stat(msg.foryou);  }\n            \n             \n        });\n \n    })(scope);\n      \n\n</script>\n<table width=\"100%\">\n    \n    <tr>\n        <td colspan=3>&nbsp;</td>\n        <td colspan=6><center><span class=\"smallheadings\" >Giorno</span></center></td>\n        <!--<td colspan=3><center><span class=\"smallheadings\">Clima</span></center></td> -->\n        <td colspan=3><center><span class=\"smallheadings\">AWAY</span></center></td> \n    </tr>\n   \n    <tr>\n        <td colspan=3>&nbsp;</td>\n        <td ng-click=\"send({payload: '29'})\" colspan=6><center><span id=\"{{ 'd0' + ID }}\" style=\"cursor:pointer;color:white;font-size:100%\">LUNEDI</span></center></td>\n        <!-- <td ng-click=\"send({payload: '1'})\" colspan=3><center><span id=\"{{'s0' + ID }}\" style=\"color:white;font-size:100%\">14</span></center></td>  -->\n        <td ng-click=\"send({payload: '2'})\" colspan=3><center><span id=\"{{'s1' + ID }}\" style=\"cursor:pointer;color:white;font-size:100%\">17</span></center></td> \n    </tr>\n    \n    <tr style=\"height:2px\">\n        <td colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> \n        <td id=\"{{ 'td29' + ID }}\" colspan=6 style=\"background-color:#9E9E9E;height:2px;\"></td>        \n        <!-- <td id=\"{{'td1' + ID }}\" colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> -->\n        <td id=\"{{'td2 + ID '}}\" colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> \n    </tr>  \n\n    <tr>\n        <td ng-click=\"send({payload: '5'})\" class=\"thedays\"><span id=\"{{ 'v0' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't0' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '6'})\" class=\"thedays\"><span id=\"{{ 'v1' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't1' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '7'})\" class=\"thedays\"><span id=\"{{ 'v2' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't2' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '8'})\" class=\"thedays\"><span id=\"{{ 'v3' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't3' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '9'})\" class=\"thedays\"><span id=\"{{ 'v4' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't4' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '10'})\" class=\"thedays\"><span id=\"{{ 'v5' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't5' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '11'})\" class=\"thedays\"><span id=\"{{ 'v6' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't6' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '12'})\" class=\"thedays\"><span id=\"{{ 'v7' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't7' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '13'})\" class=\"thedays\"><span id=\"{{ 'v8' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't8' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '14'})\" class=\"thedays\"><span id=\"{{ 'v9' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't9' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '15'})\" class=\"thedays\"><span id=\"{{ 'v10' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't10' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '16'})\" class=\"thedays\"><span id=\"{{ 'v11' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't11' + ID }}\" class=\"theblocks\"></div></td>\n    </tr>  \n    \n    <tr style=\"height:2px\">\n        <td id=\"{{ 'td5' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td6' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td7' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td8' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td9' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td10' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td11' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td12' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td13' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td14' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td15' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td16' + ID }}\" class=\"the2px\"></td>\n    </tr>   \n    \n    <tr>\n        <td align=\"center\">0</td>\n        <td align=\"center\">1</td>\n        <td align=\"center\">2</td>\n        <td align=\"center\">3</td>\n        <td align=\"center\">4</td>\n        <td align=\"center\">5</td>\n        <td align=\"center\">6</td>\n        <td align=\"center\">7</td>\n        <td align=\"center\">8</td>\n        <td align=\"center\">9</td>\n        <td align=\"center\">10</td>\n        <td align=\"center\">11</td>\n    </tr> \n    \n    <tr>\n        <td ng-click=\"send({payload: '17'})\" class=\"thedays\"><span id=\"{{ 'v12' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't12' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '18'})\" class=\"thedays\"><span id=\"{{ 'v13' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't13' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '19'})\" class=\"thedays\"><span id=\"{{ 'v14' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't14' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '20'})\" class=\"thedays\"><span id=\"{{ 'v15' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't15' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '21'})\" class=\"thedays\"><span id=\"{{ 'v16' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't16' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '22'})\" class=\"thedays\"><span id=\"{{ 'v17' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't17' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '23'})\" class=\"thedays\"><span id=\"{{ 'v18' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't18' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '24'})\" class=\"thedays\"><span id=\"{{ 'v19' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't19' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '25'})\" class=\"thedays\"><span id=\"{{ 'v20' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't20' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '26'})\" class=\"thedays\"><span id=\"{{ 'v21' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't21' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '27'})\" class=\"thedays\"><span id=\"{{ 'v22' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't22' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '28'})\" class=\"thedays\"><span id=\"{{ 'v23' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't23' + ID }}\" class=\"theblocks\"></div></td>\n    </tr>  \n    \n    <tr style=\"height:2px\">\n        <td id=\"{{ 'td17' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td18' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td19' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td20' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td21' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td22' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td23' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td24' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td25' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td26' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td27' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td28' + ID }}\" class=\"the2px\"></td>\n    </tr>  \n    \n    <tr>\n        <td align=\"center\">12</td>\n        <td align=\"center\">13</td>\n        <td align=\"center\">14</td>\n        <td align=\"center\">15</td>\n        <td align=\"center\">16</td>\n        <td align=\"center\">17</td>\n        <td align=\"center\">18</td>\n        <td align=\"center\">19</td>\n        <td align=\"center\">20</td>\n        <td align=\"center\">21</td>\n        <td align=\"center\">22</td>\n        <td align=\"center\">23</td>\n    </tr> \n    \n    <tr height=\"5px\">\n        <td colspan=\"12\"></td>\n    </tr>\n    \n    <tr height=\"20px\"> \n        <td colspan=2 class=\"smallheadings\"><center> Azioni: </center></td> \n\n        <td colspan=10 ><center><span id=\"{{ 'info' + ID }}\" class=\"smallheadings\" ></span></center></td>\n\n    </tr>\n    \n    <tr height=\"5px\">\n        <td colspan=\"12\"></td>\n    </tr>\n\n    <tr style=\"height:48px\">\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'd'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"keyboard_arrow_down\">\n                    <!--<md-tooltip md-direction=\"bottom\">DECREMENTA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n        \n        <td colspan=2><center><span id=\"{{ 'current' + ID }}\" style=\"color:white;font-size:120%\"> - </span></center></td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'u'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"keyboard_arrow_up\">\n                    <!--<md-tooltip md-direction=\"bottom\">INCREMENTA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'r'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"content_copy\">\n                    <!--<md-tooltip md-direction=\"bottom\">COPIA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 's'})\"> \n                 <ng-md-icon style=\"color: #fff;\" icon=\"save\">\n                    <!--<md-tooltip md-direction=\"bottom\">SALVA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\"  ng-click=\"send({payload: 'c'})\"> \n                 <ng-md-icon style=\"color: #fff;\" icon=\"cancel\">\n                    <!--<md-tooltip md-direction=\"bottom\">ANNULLA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n    </tr>\n\n</table>",
+        "format": "<script>\nvar thedays=[\"DOMENICA\",\"LUNEDI\",\"MARTEDI\",\"MERCOLEDI\",\"GIOVEDI\",\"VENERDI\",\"SABATO\"];\nvar ID = \"AA\";\n\nvar last=29;\n\nfunction bar(mm,val)\n{\nif (val>=12 && val<13) { $(mm).height(\"12%\"); $(mm).css('background-color', '#1E88E5'); } //blue\nif (val>=13 && val<14) { $(mm).height(\"16%\"); $(mm).css('background-color', '#039BE5'); }\nif (val>=14 && val<15) { $(mm).height(\"20%\"); $(mm).css('background-color', '#00ACC1'); } \nif (val>=15 && val<16) { $(mm).height(\"24%\"); $(mm).css('background-color', '#039BE5'); } // cyan\nif (val>=16 && val<17) { $(mm).height(\"28%\"); $(mm).css('background-color', '#00ACC1'); }\nif (val>=17 && val<18) { $(mm).height(\"32%\"); $(mm).css('background-color', '#00897B'); } \nif (val>=18 && val<19) { $(mm).height(\"36%\"); $(mm).css('background-color', '#388E3C'); } // green\nif (val>=19 && val<20) { $(mm).height(\"40%\"); $(mm).css('background-color', '#689F38'); }\nif (val>=20 && val<21) { $(mm).height(\"44%\"); $(mm).css('background-color', '#C0CA33'); }\nif (val>=21 && val<22) { $(mm).height(\"48%\"); $(mm).css('background-color', '#FDD835'); } // yellow\nif (val>=22 && val<23) { $(mm).height(\"52%\"); $(mm).css('background-color', '#FBC02D'); }\nif (val>=23 && val<24) { $(mm).height(\"56%\"); $(mm).css('background-color', '#FFA000'); }\nif (val>=24) { $(mm).height(\"60%\"); $(mm).css('background-color','#E64A19'); } // red\n}\n\n//function bar(mm,val)\n//{\n//if (val==14 || val==14.5) { $(mm).height(\"12%\"); $(mm).css('background-color', '#1E88E5'); } //blue\n//if (val==15 || val==15.5) { $(mm).height(\"16%\"); $(mm).css('background-color', '#039BE5'); }\n//if (val==16 || val==16.5) { $(mm).height(\"20%\"); $(mm).css('background-color', '#00ACC1'); } \n//if (val==17 || val==17.5) { $(mm).height(\"24%\"); $(mm).css('background-color', '#039BE5'); } // cyan\n//if (val==18 || val==18.5) { $(mm).height(\"28%\"); $(mm).css('background-color', '#00ACC1'); }\n//if (val==19 || val==19.5) { $(mm).height(\"32%\"); $(mm).css('background-color', '#00897B'); } \n//if (val==20 || val==20.5) { $(mm).height(\"36%\"); $(mm).css('background-color', '#388E3C'); } // green\n//if (val==21 || val==21.5) { $(mm).height(\"40%\"); $(mm).css('background-color', '#689F38'); }\n//if (val==22 || val==22.5) { $(mm).height(\"44%\"); $(mm).css('background-color', '#C0CA33'); }\n//if (val==23 || val==23.5) { $(mm).height(\"48%\"); $(mm).css('background-color', '#FDD835'); } // yellow\n//if (val==24 || val==24.5) { $(mm).height(\"52%\"); $(mm).css('background-color', '#FBC02D'); }\n//if (val==25 || val==25.5) { $(mm).height(\"56%\"); $(mm).css('background-color', '#FFA000'); }\n//if (val==26) { $(mm).height(\"60%\"); $(mm).css('background-color','#E64A19'); } // red\n//}\n\nfunction stat(text)\n{\n$(\"#info\"+ID).text(text);\nvar tm=setTimeout(function(){ $(\"#info\"+ID).text(\"Ok\"); clearTimeout(tm);}, 3000);\n}\n\nfunction selec(val,sta)\n{\nvar w=\"#td\"+val+ID;\n if (sta) $(w).css('background-color','#4CAF50'); else $(w).css('background-color','#FFC107');\n}\n\n    (function(scope){\n        scope.ID = ID;\n        scope.send({payload: '29'})\n        scope.$watch('msg', function(msg) {\n            selec(last,0); last=msg.selector; selec(last,1);\n            for (var x=0; x<24; x++) \n                { \n                    var w=\"#t\"+x+ID; bar(w,msg.timing[((msg.days-1)*24)+x].toFixed(1)); \n                    var v=\"#v\"+x+ID; $(v).text(msg.timing[((msg.days-1)*24)+x].toFixed(1)+\"°\")\n                } \n            for (var x=0; x<2; x++) { var w=\"#s\"+x+ID; $(w).text(msg.timing[168+x].toFixed(1)+\"°\"); }\n             $(\"#d0\"+ID).text(thedays[msg.days-1]);\n             if ((last>4) &&(last<29))\n                 $(\"#current\"+ID).text(msg.timing[((msg.days-1)*24)+last-5].toFixed(1) + \"°\");\n             else\n                 $(\"#current\"+ID).text(\"-\");\n                 \n            if (msg.foryou!=\"\") { stat(msg.foryou);  }\n            \n             \n        });\n \n    })(scope);\n      \n\n</script>\n<table width=\"100%\">\n    \n    <tr>\n        <td colspan=3>&nbsp;</td>\n        <td colspan=6><center><span class=\"smallheadings\" >Giorno</span></center></td>\n        <!--<td colspan=3><center><span class=\"smallheadings\">Clima</span></center></td> -->\n        <td colspan=3><center><span class=\"smallheadings\">AWAY</span></center></td> \n    </tr>\n   \n    <tr>\n        <td colspan=3>&nbsp;</td>\n        <td ng-click=\"send({payload: '29'})\" colspan=6><center><span id=\"{{ 'd0' + ID }}\" style=\"cursor:pointer;color:white;font-size:100%\">LUNEDI</span></center></td>\n        <!-- <td ng-click=\"send({payload: '1'})\" colspan=3><center><span id=\"{{'s0' + ID }}\" style=\"color:white;font-size:100%\">14</span></center></td>  -->\n        <td ng-click=\"send({payload: '2'})\" colspan=3><center><span id=\"{{'s1' + ID }}\" style=\"cursor:pointer;color:white;font-size:100%\">17</span></center></td> \n    </tr>\n    \n    <tr style=\"height:2px\">\n        <td colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> \n        <td id=\"{{ 'td29' + ID }}\" colspan=6 style=\"background-color:#9E9E9E;height:2px;\"></td>        \n        <!-- <td id=\"{{'td1' + ID }}\" colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> -->\n        <td id=\"{{'td2 + ID '}}\" colspan=3 style=\"background-color:#9E9E9E;height:2px;\"></td> \n    </tr>  \n\n    <tr>\n        <td ng-click=\"send({payload: '5'})\" class=\"thedays\"><span id=\"{{ 'v0' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't0' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '6'})\" class=\"thedays\"><span id=\"{{ 'v1' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't1' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '7'})\" class=\"thedays\"><span id=\"{{ 'v2' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't2' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '8'})\" class=\"thedays\"><span id=\"{{ 'v3' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't3' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '9'})\" class=\"thedays\"><span id=\"{{ 'v4' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't4' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '10'})\" class=\"thedays\"><span id=\"{{ 'v5' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't5' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '11'})\" class=\"thedays\"><span id=\"{{ 'v6' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't6' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '12'})\" class=\"thedays\"><span id=\"{{ 'v7' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't7' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '13'})\" class=\"thedays\"><span id=\"{{ 'v8' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't8' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '14'})\" class=\"thedays\"><span id=\"{{ 'v9' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't9' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '15'})\" class=\"thedays\"><span id=\"{{ 'v10' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't10' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '16'})\" class=\"thedays\"><span id=\"{{ 'v11' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't11' + ID }}\" class=\"theblocks\"></div></td>\n    </tr>  \n    \n    <tr style=\"height:2px\">\n        <td id=\"{{ 'td5' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td6' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td7' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td8' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td9' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td10' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td11' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td12' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td13' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td14' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td15' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td16' + ID }}\" class=\"the2px\"></td>\n    </tr>   \n    \n    <tr>\n        <td align=\"center\">0</td>\n        <td align=\"center\">1</td>\n        <td align=\"center\">2</td>\n        <td align=\"center\">3</td>\n        <td align=\"center\">4</td>\n        <td align=\"center\">5</td>\n        <td align=\"center\">6</td>\n        <td align=\"center\">7</td>\n        <td align=\"center\">8</td>\n        <td align=\"center\">9</td>\n        <td align=\"center\">10</td>\n        <td align=\"center\">11</td>\n    </tr> \n    \n    <tr>\n        <td ng-click=\"send({payload: '17'})\" class=\"thedays\"><span id=\"{{ 'v12' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't12' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '18'})\" class=\"thedays\"><span id=\"{{ 'v13' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't13' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '19'})\" class=\"thedays\"><span id=\"{{ 'v14' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't14' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '20'})\" class=\"thedays\"><span id=\"{{ 'v15' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't15' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '21'})\" class=\"thedays\"><span id=\"{{ 'v16' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't16' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '22'})\" class=\"thedays\"><span id=\"{{ 'v17' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't17' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '23'})\" class=\"thedays\"><span id=\"{{ 'v18' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't18' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '24'})\" class=\"thedays\"><span id=\"{{ 'v19' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't19' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '25'})\" class=\"thedays\"><span id=\"{{ 'v20' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't20' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '26'})\" class=\"thedays\"><span id=\"{{ 'v21' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't21' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '27'})\" class=\"thedays\"><span id=\"{{ 'v22' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't22' + ID }}\" class=\"theblocks\"></div></td>\n        <td ng-click=\"send({payload: '28'})\" class=\"thedays\"><span id=\"{{ 'v23' + ID }}\" class=\"thetemps\"></span><div id=\"{{ 't23' + ID }}\" class=\"theblocks\"></div></td>\n    </tr>  \n    \n    <tr style=\"height:2px\">\n        <td id=\"{{ 'td17' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td18' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td19' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td20' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td21' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td22' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td23' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td24' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td25' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td26' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td27' + ID }}\" class=\"the2px\"></td>\n        <td id=\"{{ 'td28' + ID }}\" class=\"the2px\"></td>\n    </tr>  \n    \n    <tr>\n        <td align=\"center\">12</td>\n        <td align=\"center\">13</td>\n        <td align=\"center\">14</td>\n        <td align=\"center\">15</td>\n        <td align=\"center\">16</td>\n        <td align=\"center\">17</td>\n        <td align=\"center\">18</td>\n        <td align=\"center\">19</td>\n        <td align=\"center\">20</td>\n        <td align=\"center\">21</td>\n        <td align=\"center\">22</td>\n        <td align=\"center\">23</td>\n    </tr> \n    \n    <tr height=\"5px\">\n        <td colspan=\"12\"></td>\n    </tr>\n    \n    <tr height=\"20px\"> \n        <td colspan=2 class=\"smallheadings\"><center> Azioni: </center></td> \n\n        <td colspan=10 ><center><span id=\"{{ 'info' + ID }}\" class=\"smallheadings\" ></span></center></td>\n\n    </tr>\n    \n    <tr height=\"5px\">\n        <td colspan=\"12\"></td>\n    </tr>\n\n    <tr style=\"height:48px\">\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'd'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"keyboard_arrow_down\">\n                    <!--<md-tooltip md-direction=\"bottom\">DECREMENTA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n        \n        <td colspan=2><center><span id=\"{{ 'current' + ID }}\" style=\"color:white;font-size:120%\"> - </span></center></td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'u'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"keyboard_arrow_up\">\n                    <!--<md-tooltip md-direction=\"bottom\">INCREMENTA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 'r'})\"> \n               <ng-md-icon style=\"color: #fff;\" icon=\"content_copy\">\n                    <!--<md-tooltip md-direction=\"bottom\">COPIA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\" ng-click=\"send({payload: 's'})\"> \n                 <ng-md-icon style=\"color: #fff;\" icon=\"save\">\n                    <!--<md-tooltip md-direction=\"bottom\">SALVA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n\n        <td colspan=2> <center>\n            <button class=\"vibrate filled touched smallfont rounded greybuttons\"  ng-click=\"send({payload: 'c'})\"> \n                 <ng-md-icon style=\"color: #fff;\" icon=\"cancel\">\n                    <!--<md-tooltip md-direction=\"bottom\">ANNULLA</md-tooltip>-->\n                </ng-md-icon>\n            </button> </center>\n        </td>\n    </tr>\n\n</table>",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -184,38 +184,39 @@
         "y": 140,
         "wires": [
             [
-                "91c19b27.3c9f08"
+                "9773ea79.6d18f8"
             ]
         ]
     },
     {
-        "id": "91c19b27.3c9f08",
+        "id": "9773ea79.6d18f8",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Process controls",
-        "func": "if ( typeof context.days == 'undefined' || flow.get(\"resetday\")) \n{\n    var date = new Date();\n    var daynum = date.getDay();\n    context.days= daynum+1;\n    flow.set(\"resetday\",false);\n}\n\nif ( typeof (flow.get(\"thermostat_mode\")) == 'undefined') \n{\n    flow.set(\"thermostat_mode\",\"off\");\n}\n\nif ( typeof context.selector == 'undefined' ) context.selector=29;\nif ( typeof context.saving == 'undefined' ) context.saving=1;\nif ( typeof context.global.timing == 'undefined' ) \n    {\n        context.global.timing=[\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                        6,14\n                        ];\n        context.saving=1;                    \n    }\nvar timing=global.get(\"timing\");\n//if ( typeof global.get(\"days\") != 'undefined' ) context.days=global.get(\"days\");\n\nswitch (msg.payload)\n    {\n    case \"u\" :  if ((context.selector>4)&&(context.selector<29))\n                {\n                    timing[((context.days-1)*24)+context.selector-5]+=0.5; \n                    if (timing[((context.days-1)*24)+context.selector-5]>24){ timing[((context.days-1)*24)+context.selector-5]=24; msg.foryou=\"Limite raggiunto\";}\n                    else msg.foryou=\"Temperatura aumentata\";\n                }\n                if (context.selector==1) { if (timing[168+(context.selector-1)]<24) {  timing[168+(context.selector-1)]+=0.5; msg.foryou=\"Temperatura clima aumentata di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==2) { if (timing[168+(context.selector-1)]<24) {  timing[168+(context.selector-1)]+=0.5; msg.foryou=\"Temperatura fuori casa aumentata di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==29) { msg.foryou=\"Giorno successivo\"; context.days++; if (context.days>7) { context.days = 1; } }\n                break;\n    case \"d\" :  if ((context.selector>4)&&(context.selector<29))\n                {\n                    timing[((context.days-1)*24)+context.selector-5]-=0.5; \n                    if (timing[((context.days-1)*24)+context.selector-5]<14){ timing[((context.days-1)*24)+context.selector-5]=14; msg.foryou=\"Limite raggiunto\";}\n                    else msg.foryou=\"Temperatura decrementata\";\n                }\n                if (context.selector==1) { if (timing[168+(context.selector-1)]>12) { timing[168+(context.selector-1)]-=0.5; msg.foryou=\"Temperatura clima diminuita di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==2) { if (timing[168+(context.selector-1)]>12) { timing[168+(context.selector-1)]-=0.5; msg.foryou=\"Temperatura fuori casa diminuita di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==29) {  msg.foryou=\"Giorno precedente\";  context.days--; if (context.days < 1) { context.days = 7;  } }\n                break;\n    case 'r' :  if ((context.selector>=5)&&(context.selector<28))\n                        {\n                         timing[((context.days-1)*24)+context.selector-4]=timing[((context.days-1)*24)+context.selector-5];   \n                         context.selector++;\n                         msg.foryou=\"Temperatura copiata nello slot successivo\";\n                        }\n                if ((context.selector==29)&&(context.days<7))\n                        {\n                         for (var a=0;a<24;a++)\n                            {\n                             timing[((context.days)*24)+a]=timing[((context.days-1)*24)+a];   \n                            }\n                         context.days++;\n                         msg.foryou=\"Impostazioni copiate nel giorno successivo\";\n                        }\n                        else if(context.days==7)\n                            msg.foryou=\"Fine della settimana raggiunto!\";\n                break;\n    case 's': context.saving=0;  msg.foryou=\"Impostazioni salvate\"; break;\n    case '1':\n    case '2':\n    case '3':\n    case '4':\n    case '5':\n    case '6':\n    case '7':\n    case '8':\n    case '9':\n    case '10':\n    case '11':\n    case '12':\n    case '13':\n    case '14':\n    case '15':\n    case '16':\n    case '17':\n    case '18':\n    case '19':\n    case '20':\n    case '21':\n    case '22':\n    case '23':\n    case '24':\n    case '25':\n    case '26':\n    case '27':\n    case '28':\n    case '29': context.selector=parseInt(msg.payload);\n               if (msg.payload=='1') msg.foryou=\"Temperatura clima selezionata\"; \n               else if (msg.payload=='2') msg.foryou=\"Temperatura fuori casa selezionata\";\n               else if (msg.payload=='29') msg.foryou=\"Giorno selezionato\";\n               else  msg.foryou=\"Regolazione temperatura ore: \" + (parseInt(msg.payload)-5);\n    break;\n    case 'c' : msg.payload=\"niente\";  msg.foryou=\"Cambiamenti annullati\"; node.send([null,null,msg]);\n    }\n\nmsg.temperatures=context.temperatures;\nmsg.timing=timing;\nmsg.days=context.days;\nmsg.selector=context.selector;\n\nnode.send([msg,null,null]);\n\nif (context.saving===0) \n    { \n       msg.topic=\"\";\n        msg.timing=\"\";\n        msg.payload=JSON.stringify(timing);\n        node.send([null,msg,null]); \n        context.saving=1;\n    }\n    msg.foryou=\"\"",
+        "func": "if ( typeof context.days == 'undefined' || flow.get(\"resetday\")) \n{\n    var date = new Date();\n    var daynum = date.getDay();\n    context.days= daynum+1;\n    flow.set(\"resetday\",false);\n}\n\nif ( typeof (flow.get(\"thermostat_mode\")) == 'undefined') \n{\n    flow.set(\"thermostat_mode\",\"off\");\n}\n\nif ( typeof context.selector == 'undefined' ) context.selector=29;\nif ( typeof context.saving == 'undefined' ) context.saving=1;\n\nlet timing = global.get(\"timing\");\nif ( !timing || !Array.isArray(timing) ) \n    {\n        timing=[\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,\n                6,14\n                ];\n        context.saving=1;\n        global.set(\"timing\",timing);\n    }\n//if ( typeof global.get(\"days\") != 'undefined' ) context.days=global.get(\"days\");\n\nswitch (msg.payload)\n    {\n    case \"u\" :  if ((context.selector>4)&&(context.selector<29))\n                {\n                    timing[((context.days-1)*24)+context.selector-5]+=0.5; \n                    if (timing[((context.days-1)*24)+context.selector-5]>24){ timing[((context.days-1)*24)+context.selector-5]=24; msg.foryou=\"Limite raggiunto\";}\n                    else msg.foryou=\"Temperatura aumentata\";\n                }\n                if (context.selector==1) { if (timing[168+(context.selector-1)]<24) {  timing[168+(context.selector-1)]+=0.5; msg.foryou=\"Temperatura clima aumentata di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==2) { if (timing[168+(context.selector-1)]<24) {  timing[168+(context.selector-1)]+=0.5; msg.foryou=\"Temperatura fuori casa aumentata di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==29) { msg.foryou=\"Giorno successivo\"; context.days++; if (context.days>7) { context.days = 1; } }\n                break;\n    case \"d\" :  if ((context.selector>4)&&(context.selector<29))\n                {\n                    timing[((context.days-1)*24)+context.selector-5]-=0.5; \n                    if (timing[((context.days-1)*24)+context.selector-5]<14){ timing[((context.days-1)*24)+context.selector-5]=14; msg.foryou=\"Limite raggiunto\";}\n                    else msg.foryou=\"Temperatura decrementata\";\n                }\n                if (context.selector==1) { if (timing[168+(context.selector-1)]>12) { timing[168+(context.selector-1)]-=0.5; msg.foryou=\"Temperatura clima diminuita di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==2) { if (timing[168+(context.selector-1)]>12) { timing[168+(context.selector-1)]-=0.5; msg.foryou=\"Temperatura fuori casa diminuita di 0.5°C\"; } else msg.foryou=\"Limite raggiunto\"; }\n                if (context.selector==29) {  msg.foryou=\"Giorno precedente\";  context.days--; if (context.days < 1) { context.days = 7;  } }\n                break;\n    case 'r' :  if ((context.selector>=5)&&(context.selector<28))\n                        {\n                         timing[((context.days-1)*24)+context.selector-4]=timing[((context.days-1)*24)+context.selector-5];   \n                         context.selector++;\n                         msg.foryou=\"Temperatura copiata nello slot successivo\";\n                        }\n                if ((context.selector==29)&&(context.days<7))\n                        {\n                         for (var a=0;a<24;a++)\n                            {\n                             timing[((context.days)*24)+a]=timing[((context.days-1)*24)+a];   \n                            }\n                         context.days++;\n                         msg.foryou=\"Impostazioni copiate nel giorno successivo\";\n                        }\n                        else if(context.days==7)\n                            msg.foryou=\"Fine della settimana raggiunto!\";\n                break;\n    case 's': context.saving=0;  msg.foryou=\"Impostazioni salvate\"; break;\n    case '1':\n    case '2':\n    case '3':\n    case '4':\n    case '5':\n    case '6':\n    case '7':\n    case '8':\n    case '9':\n    case '10':\n    case '11':\n    case '12':\n    case '13':\n    case '14':\n    case '15':\n    case '16':\n    case '17':\n    case '18':\n    case '19':\n    case '20':\n    case '21':\n    case '22':\n    case '23':\n    case '24':\n    case '25':\n    case '26':\n    case '27':\n    case '28':\n    case '29': context.selector=parseInt(msg.payload);\n               if (msg.payload=='1') msg.foryou=\"Temperatura clima selezionata\"; \n               else if (msg.payload=='2') msg.foryou=\"Temperatura fuori casa selezionata\";\n               else if (msg.payload=='29') msg.foryou=\"Giorno selezionato\";\n               else  msg.foryou=\"Regolazione temperatura ore: \" + (parseInt(msg.payload)-5);\n    break;\n    case 'c' : msg.payload=\"niente\";  msg.foryou=\"Cambiamenti annullati\"; node.send([null,null,msg]);\n    }\n\nmsg.temperatures=context.temperatures;\nmsg.timing=timing;\nmsg.days=context.days;\nmsg.selector=context.selector;\n\nnode.send([msg,null,null]);\n\nif (context.saving===0) \n    { \n       msg.topic=\"\";\n        msg.timing=\"\";\n        msg.payload=JSON.stringify(timing);\n        node.send([null,msg,null]); \n        context.saving=1;\n    }\n    msg.foryou=\"\"",
         "outputs": "3",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 560,
         "y": 200,
         "wires": [
             [
-                "2f1fbf35.bb46e"
+                "e0fd4ef8.cf0b3"
             ],
             [
-                "7e59dbcf.503e04"
+                "780ced4a.7679d4"
             ],
             [
-                "5d8f707.eee7f9"
+                "20ded924.9b9306"
             ]
         ]
     },
     {
-        "id": "7da018c4.912cf8",
+        "id": "c128a3ee.22a46",
         "type": "inject",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Once only",
         "props": [
             {
@@ -239,15 +240,15 @@
         "y": 237,
         "wires": [
             [
-                "91c19b27.3c9f08",
-                "f43ae8a0.512278"
+                "9773ea79.6d18f8",
+                "a0408ce0.f23a8"
             ]
         ]
     },
     {
-        "id": "437f135e.fa4e0c",
+        "id": "74fef445.d62e9c",
         "type": "inject",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Every minute",
         "props": [
             {
@@ -269,33 +270,34 @@
         "y": 480,
         "wires": [
             [
-                "c1929c88.9308c",
-                "c57ef1b2.e99e8"
+                "7ba12336.80a24c",
+                "266cc8e.7387c38"
             ]
         ]
     },
     {
-        "id": "da41cfc9.63748",
+        "id": "a805343b.fe6d88",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Process heat",
-        "func": "if (flow.get(\"thermostat_mode\") != \"schedule\") {\n    return null;\n}\n\nvar timing=global.get(\"timing\");\nvar now = new Date(msg.time);\n\nvar fixed_temperature = timing[(now.getDay()*24)+now.getHours()];\nvar away_temperature = timing[169];\nvar away_mode = flow.get(\"away_mode\");\n\nif (away_mode) {\n    msg.payload = (fixed_temperature > away_temperature ? away_temperature : fixed_temperature);\n    msg.awayMode = true;\n} else {\n    msg.payload = fixed_temperature;\n    msg.awayMode = false;\n}\n\nnode.status({fill:\"blue\",shape:\"dot\",text: \"Actual: \" + flow.get(\"ambient_temperature\") + \" - Set point: \" + msg.payload + \"°C\" + \" [away mode: \" + away_mode + \"]\"});\n\n\nreturn msg;",
+        "func": "if (flow.get(\"thermostat_mode\") != \"schedule\") {\n    return null;\n}\n\nlet timing=global.get(\"timing\");\nvar now = new Date(msg.time);\n\nvar fixed_temperature = timing[(now.getDay()*24)+now.getHours()];\nvar away_temperature = timing[169];\nvar away_mode = flow.get(\"away_mode\");\n\nif (away_mode) {\n    msg.payload = (fixed_temperature > away_temperature ? away_temperature : fixed_temperature);\n    msg.awayMode = true;\n} else {\n    msg.payload = fixed_temperature;\n    msg.awayMode = false;\n}\n\nnode.status({fill:\"blue\",shape:\"dot\",text: \"Actual: \" + flow.get(\"ambient_temperature\") + \" - Set point: \" + msg.payload + \"°C\" + \" [away mode: \" + away_mode + \"]\"});\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 890,
         "y": 480,
         "wires": [
             [
-                "331e9655.a67dca"
+                "f0e9bddf.11ad3"
             ]
         ]
     },
     {
-        "id": "7e59dbcf.503e04",
+        "id": "780ced4a.7679d4",
         "type": "file",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "backup",
         "filename": "/share/thermo_scheduler.save",
         "appendNewline": true,
@@ -308,9 +310,9 @@
         ]
     },
     {
-        "id": "f43ae8a0.512278",
+        "id": "a0408ce0.f23a8",
         "type": "file in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Restore",
         "filename": "/share/thermo_scheduler.save",
         "format": "utf8",
@@ -319,30 +321,33 @@
         "y": 280,
         "wires": [
             [
-                "d4bad6bd.de86d8"
+                "5cdbcb09.d2b184"
             ]
         ]
     },
     {
-        "id": "d4bad6bd.de86d8",
+        "id": "5cdbcb09.d2b184",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Restore data from SD",
-        "func": "context.global.timing=JSON.parse(msg.payload);\nmsg.payload=\"\";\nreturn msg;",
+        "func": "let timing = global.get(\"timing\");\ntiming=JSON.parse(msg.payload);\nglobal.set(\"timing\",timing);\nmsg.payload=\"\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 750,
         "y": 280,
         "wires": [
             [
-                "f902ad61.6b079"
+                "8cc70579.6ac458"
             ]
         ]
     },
     {
-        "id": "7a775741.7959d8",
+        "id": "645bd732.1d8128",
         "type": "moment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "topic": "",
         "input": "payload",
@@ -360,14 +365,14 @@
         "y": 560,
         "wires": [
             [
-                "97727f5.03fee8"
+                "5a3f0ac6.23d634"
             ]
         ]
     },
     {
-        "id": "97727f5.03fee8",
+        "id": "5a3f0ac6.23d634",
         "type": "ui_text",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "317e9d9c.dea8e2",
         "order": 2,
         "width": 6,
@@ -381,28 +386,28 @@
         "wires": []
     },
     {
-        "id": "8fd5f3fa.1b9fa",
+        "id": "eb3fb3aa.cba34",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "restore",
         "links": [
-            "5d8f707.eee7f9"
+            "20ded924.9b9306"
         ],
         "x": 351.5,
         "y": 288,
         "wires": [
             [
-                "f43ae8a0.512278"
+                "a0408ce0.f23a8"
             ]
         ]
     },
     {
-        "id": "5d8f707.eee7f9",
+        "id": "20ded924.9b9306",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "restore",
         "links": [
-            "8fd5f3fa.1b9fa",
+            "eb3fb3aa.cba34",
             "93466115.e953e"
         ],
         "x": 711.5,
@@ -410,12 +415,12 @@
         "wires": []
     },
     {
-        "id": "4c687b8d.7e0c64",
+        "id": "106201b7.f5bb7e",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "restoreSD",
         "links": [
-            "f902ad61.6b079",
+            "8cc70579.6ac458",
             "8e1afd82.fc23f",
             "aa45f621.310328"
         ],
@@ -423,54 +428,54 @@
         "y": 189,
         "wires": [
             [
-                "91c19b27.3c9f08"
+                "9773ea79.6d18f8"
             ]
         ]
     },
     {
-        "id": "f902ad61.6b079",
+        "id": "8cc70579.6ac458",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "restoreSD",
         "links": [
-            "4c687b8d.7e0c64"
+            "106201b7.f5bb7e"
         ],
         "x": 945,
         "y": 280,
         "wires": []
     },
     {
-        "id": "2f1fbf35.bb46e",
+        "id": "e0fd4ef8.cf0b3",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "setSettings",
         "links": [
-            "aaa72cf9.ca042"
+            "1a23cdc.2ee0b32"
         ],
         "x": 712.5,
         "y": 160,
         "wires": []
     },
     {
-        "id": "aaa72cf9.ca042",
+        "id": "1a23cdc.2ee0b32",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "setSettings",
         "links": [
-            "2f1fbf35.bb46e"
+            "e0fd4ef8.cf0b3"
         ],
         "x": 157.5,
         "y": 137,
         "wires": [
             [
-                "8e66ea98.c308e8"
+                "a0aab4d8.8b6498"
             ]
         ]
     },
     {
-        "id": "c1929c88.9308c",
+        "id": "7ba12336.80a24c",
         "type": "moment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "time",
         "topic": "",
         "input": "",
@@ -488,14 +493,14 @@
         "y": 480,
         "wires": [
             [
-                "da41cfc9.63748"
+                "a805343b.fe6d88"
             ]
         ]
     },
     {
-        "id": "a8701256.5c351",
+        "id": "64c9da3e.3127b4",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Store away state",
         "func": "msg.topic = 'awayMode';\nvar awayMode = false;\n\nif(msg.payload == \"armed_away\"){\n    awayMode = true; \n}\n\nflow.set(\"away_mode\",awayMode);\nnode.status({fill:\"red\",shape:\"dot\",text:\"away mode: \" + awayMode});  \n\nreturn msg;\n",
         "outputs": 1,
@@ -504,17 +509,17 @@
         "y": 780,
         "wires": [
             [
-                "d47f4ead.40532"
+                "f8f19df4.f2fd7"
             ]
         ]
     },
     {
-        "id": "331e9655.a67dca",
+        "id": "f0e9bddf.11ad3",
         "type": "api-call-service",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "server": "41108723.0bf848",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "climate",
         "service": "set_temperature",
@@ -522,9 +527,16 @@
         "data": "{\"temperature\": \"{{payload}}\", \"hvac_mode\": \"heat\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 1160,
         "y": 560,
         "wires": [
@@ -532,21 +544,21 @@
         ]
     },
     {
-        "id": "4c3084c1.63fabc",
+        "id": "a2f11a6d.ff7e28",
         "type": "api-call-service",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "server": "41108723.0bf848",
-        "version": 1,
+        "version": 3,
         "service_domain": "climate",
         "service": "turn_on",
         "entityId": "climate.termostato",
         "data": "{\"entity_id\": \"climate.termostato\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 900,
         "y": 1020,
         "wires": [
@@ -554,21 +566,21 @@
         ]
     },
     {
-        "id": "8e15672e.071e48",
+        "id": "180c3495.1167cb",
         "type": "api-call-service",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "server": "41108723.0bf848",
-        "version": 1,
+        "version": 3,
         "service_domain": "climate",
         "service": "turn_off",
         "entityId": "climate.termostato",
         "data": "{\"entity_id\": \"climate.termostato\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 900,
         "y": 960,
         "wires": [
@@ -576,12 +588,12 @@
         ]
     },
     {
-        "id": "feb70ddc.324df",
+        "id": "c5a858fe.e4ae98",
         "type": "server-state-changed",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Away from Alarm",
         "server": "41108723.0bf848",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "alarm_control_panel.allarme_casa",
         "entityidfiltertype": "exact",
         "outputinitially": true,
@@ -591,18 +603,41 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 260,
         "y": 780,
         "wires": [
             [
-                "a8701256.5c351"
+                "64c9da3e.3127b4"
             ]
         ]
     },
     {
-        "id": "da2009d6.9e98a8",
+        "id": "95403a92.332ff8",
         "type": "inject",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Every second",
         "props": [
             {
@@ -627,14 +662,14 @@
         "y": 560,
         "wires": [
             [
-                "7a775741.7959d8"
+                "645bd732.1d8128"
             ]
         ]
     },
     {
-        "id": "d887b2c9.b213",
+        "id": "97c4518e.c0731",
         "type": "ui_template",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "317e9d9c.dea8e2",
         "name": "Nest",
         "order": 4,
@@ -649,14 +684,14 @@
         "y": 640,
         "wires": [
             [
-                "dfdda42e.7dcc58"
+                "8f7013c0.fc602"
             ]
         ]
     },
     {
-        "id": "d47f4ead.40532",
+        "id": "f8f19df4.f2fd7",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Data",
         "func": "msg.topic = \"update\";\n\nvar msg2 = {};\nmsg2.payload = flow.get(\"thermostat_mode\");\n\nvar data = {\n    'ambient_temperature': flow.get(\"ambient_temperature\") || 20,\n    'target_temperature': flow.get(\"target_temperature\") || 14,\n    'hvac_state': flow.get(\"hvac_action\") || 'off',\n    'has_leaf': flow.get(\"away_mode\") || false,\n    'off_view': flow.get(\"off_view\") || false\n}\nmsg.payload = data;\nnode.status({fill:\"red\",shape:\"dot\",text: \"ambient_temperature: \" + data.ambient_temperature + \" / target_temperature: \" + data.target_temperature + \" / away_mode: \" + data.has_leaf + \" / climate_state: \" + flow.get(\"climate_state\") + \" / hvac_state: \" + data.hvac_state + \" / thermostat_mode: \" + msg2.payload});\n\nvar msg3 = {};\nif (msg2.payload == \"off\")\n{\n    msg3.payload = false;\n}\nelse if (msg2.payload == \"countdown\")\n{\n    msg3.payload = true;\n}\nelse\n{\n    msg3 = null;\n}\n\nreturn [msg,msg2,msg3];",
         "outputs": 3,
@@ -664,25 +699,25 @@
         "initialize": "",
         "finalize": "",
         "x": 750,
-        "y": 740,
+        "y": 760,
         "wires": [
             [
-                "d887b2c9.b213",
-                "8000f986.101618"
+                "97c4518e.c0731",
+                "f774f7fb.980448"
             ],
             [
-                "fc104ad2.457258",
-                "8c6cd373.782b1"
+                "e80beafb.960048",
+                "f21ea4a8.3d7e28"
             ],
             [
-                "e89a2b6d.b97088"
+                "8d3e7ccb.05e8a"
             ]
         ]
     },
     {
-        "id": "dfdda42e.7dcc58",
+        "id": "8f7013c0.fc602",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "New setpoint from UI",
         "func": "if (msg.topic == \"target_temperature\") {\n    msg.payload = msg.payload.target_temperature;\n    flow.set(\"target_temperature\", msg.payload);\n    node.status({fill:\"red\",shape:\"dot\",text:\"target_temperature: \" + msg.payload}); \n    return msg;\n}\n",
         "outputs": 1,
@@ -691,17 +726,17 @@
         "y": 640,
         "wires": [
             [
-                "331e9655.a67dca"
+                "f0e9bddf.11ad3"
             ]
         ]
     },
     {
-        "id": "329ae89a.73ed38",
+        "id": "85c35de5.000d",
         "type": "server-state-changed",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Climate",
         "server": "41108723.0bf848",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "climate.termostato",
         "entityidfiltertype": "exact",
         "outputinitially": true,
@@ -711,19 +746,42 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 230,
         "y": 720,
         "wires": [
             [
-                "9235727a.6e04d",
-                "ac4fb59b.eb4fe8"
+                "d81ec755.7a8988",
+                "8190067a.0d5ff8"
             ]
         ]
     },
     {
-        "id": "8000f986.101618",
+        "id": "f774f7fb.980448",
         "type": "debug",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "climate_debug",
         "active": false,
         "tosidebar": true,
@@ -736,9 +794,9 @@
         "wires": []
     },
     {
-        "id": "9235727a.6e04d",
+        "id": "d81ec755.7a8988",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Store climate state",
         "func": "msg.topic = 'climate';\n\nflow.set(\"ambient_temperature\", msg.data.new_state.attributes.current_temperature);\nflow.set(\"target_temperature\",msg.data.new_state.attributes.temperature);\nflow.set(\"climate_state\",msg.payload);\nflow.set(\"off_view\",msg.payload == \"off\" ? true : false);\nflow.set(\"hvac_action\",msg.data.new_state.attributes.hvac_action);\n\nnode.status({fill:\"red\",shape:\"dot\",text:msg.payload});  \n\nreturn msg;",
         "outputs": 1,
@@ -749,14 +807,14 @@
         "y": 720,
         "wires": [
             [
-                "d47f4ead.40532"
+                "f8f19df4.f2fd7"
             ]
         ]
     },
     {
-        "id": "f8972a44.07e268",
+        "id": "30695c3e.d68cc4",
         "type": "ui_switch",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "label": "",
         "tooltip": "",
@@ -780,14 +838,14 @@
         "y": 1000,
         "wires": [
             [
-                "e89a2b6d.b97088"
+                "8d3e7ccb.05e8a"
             ]
         ]
     },
     {
-        "id": "e89a2b6d.b97088",
+        "id": "8d3e7ccb.05e8a",
         "type": "switch",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -806,18 +864,18 @@
         "y": 1000,
         "wires": [
             [
-                "8e15672e.071e48",
-                "1900d9aa.dd0cc6"
+                "180c3495.1167cb",
+                "cef71c8c.a9bc5"
             ],
             [
-                "4c3084c1.63fabc"
+                "a2f11a6d.ff7e28"
             ]
         ]
     },
     {
-        "id": "ac4fb59b.eb4fe8",
+        "id": "8190067a.0d5ff8",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "sync switch",
         "func": "var msg2 = {};\n\nif (msg.payload == \"off\"){\n    msg.payload = false;\n    flow.set(\"thermostat_mode\",\"off\");\n    msg2.payload = \"off\";\n}\nelse {\n    msg.payload = true;\n    if (flow.get(\"thermostat_mode\") == \"off\") {\n        flow.set(\"thermostat_mode\",\"schedule\");\n        msg2.payload = \"schedule\";\n    }\n    else {\n        msg2.payload = flow.get(\"thermostat_mode\");\n    }\n}\n\nreturn [msg, msg2];\n",
         "outputs": 2,
@@ -828,17 +886,17 @@
         "y": 960,
         "wires": [
             [
-                "f8972a44.07e268"
+                "30695c3e.d68cc4"
             ],
             [
-                "fc104ad2.457258"
+                "f21ea4a8.3d7e28"
             ]
         ]
     },
     {
-        "id": "2c5a1fa8.1bc74",
+        "id": "4803668a.123128",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "77b849cb.094c08",
         "order": 2,
@@ -857,15 +915,15 @@
         "y": 1340,
         "wires": [
             [
-                "2b65cd98.9eb7c2",
-                "260da8ed.9e7718"
+                "fa178067.0ef11",
+                "df7585f3.52b3d8"
             ]
         ]
     },
     {
-        "id": "2b65cd98.9eb7c2",
+        "id": "fa178067.0ef11",
         "type": "ui_ui_control",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "events": "all",
         "x": 900,
@@ -875,9 +933,9 @@
         ]
     },
     {
-        "id": "cb898546.ce1f08",
+        "id": "8a7e776.5e09688",
         "type": "ui_chart",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "eaea6ba8.f76288",
         "order": 1,
@@ -909,21 +967,20 @@
             "#9467bd",
             "#c5b0d5"
         ],
-        "useOldStyle": false,
         "outputs": 1,
         "x": 690,
         "y": 2100,
         "wires": [
             [
-                "c14b050d.e1e2f8",
-                "df4544be.b903f8"
+                "b8478180.cc3d2",
+                "8fa4fc95.6ccb"
             ]
         ]
     },
     {
-        "id": "46bb3cd2.8b9614",
+        "id": "d9362c57.332e",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Data to chart",
         "func": "var msg1 = {};\nmsg1.topic = \"target\";\nmsg1.payload = flow.get(\"target_temperature\");\n\nvar msg2 = {};\nmsg2.topic = \"ambient\";\nmsg2.payload = flow.get(\"ambient_temperature\");\n\nreturn [msg1, msg2];",
         "outputs": 2,
@@ -932,17 +989,17 @@
         "y": 2100,
         "wires": [
             [
-                "cb898546.ce1f08"
+                "8a7e776.5e09688"
             ],
             [
-                "cb898546.ce1f08"
+                "8a7e776.5e09688"
             ]
         ]
     },
     {
-        "id": "60824b4e.b55aa4",
+        "id": "3c197bdb.d59684",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "eaea6ba8.f76288",
         "order": 2,
@@ -961,15 +1018,15 @@
         "y": 1440,
         "wires": [
             [
-                "2b65cd98.9eb7c2",
-                "260da8ed.9e7718"
+                "fa178067.0ef11",
+                "df7585f3.52b3d8"
             ]
         ]
     },
     {
-        "id": "288073dc.b5abac",
+        "id": "4faba555.b954dc",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "317e9d9c.dea8e2",
         "order": 1,
@@ -988,15 +1045,15 @@
         "y": 1380,
         "wires": [
             [
-                "2b65cd98.9eb7c2",
-                "308bd8d7.bb4428"
+                "fa178067.0ef11",
+                "7d9d27e5.6bd938"
             ]
         ]
     },
     {
-        "id": "d2d1dca4.0944a",
+        "id": "37ae5a89.01cd36",
         "type": "inject",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Every minute",
         "props": [
             {
@@ -1021,29 +1078,29 @@
         "y": 2100,
         "wires": [
             [
-                "46bb3cd2.8b9614",
-                "2d6cb1e7.b77e6e"
+                "d9362c57.332e",
+                "7af169ef.9510a8"
             ]
         ]
     },
     {
-        "id": "c14b050d.e1e2f8",
+        "id": "b8478180.cc3d2",
         "type": "subflow:8850e193.e1712",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "env": [],
         "x": 870,
         "y": 2100,
         "wires": [
             [
-                "22071c2c.e1d914"
+                "b7aa55dc.b434c8"
             ]
         ]
     },
     {
-        "id": "308bd8d7.bb4428",
+        "id": "7d9d27e5.6bd938",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "restore chart",
         "func": "msg.topic=\"restore\"\nreturn msg;",
         "outputs": 1,
@@ -1055,9 +1112,9 @@
         ]
     },
     {
-        "id": "df4544be.b903f8",
+        "id": "8fa4fc95.6ccb",
         "type": "debug",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "grafico_debug",
         "active": false,
         "tosidebar": true,
@@ -1070,9 +1127,9 @@
         "wires": []
     },
     {
-        "id": "8e7011b6.a6068",
+        "id": "634ced23.8751e4",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "show today",
         "func": "flow.set(\"resetday\",true);\n\nreturn msg;",
         "outputs": 1,
@@ -1083,14 +1140,14 @@
         "y": 1280,
         "wires": [
             [
-                "2b65cd98.9eb7c2"
+                "fa178067.0ef11"
             ]
         ]
     },
     {
-        "id": "9ddcae73.103c2",
+        "id": "3ad37bad.3b6564",
         "type": "change",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "rules": [
             {
@@ -1113,9 +1170,9 @@
         ]
     },
     {
-        "id": "22071c2c.e1d914",
+        "id": "b7aa55dc.b434c8",
         "type": "switch",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -1137,14 +1194,14 @@
         "wires": [
             [],
             [
-                "9ddcae73.103c2"
+                "3ad37bad.3b6564"
             ]
         ]
     },
     {
-        "id": "2d6cb1e7.b77e6e",
+        "id": "7af169ef.9510a8",
         "type": "change",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "global.yves",
         "rules": [
             {
@@ -1164,14 +1221,14 @@
         "y": 2160,
         "wires": [
             [
-                "cb898546.ce1f08"
+                "8a7e776.5e09688"
             ]
         ]
     },
     {
-        "id": "6f403c9c.068794",
+        "id": "5021393b.a4a638",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "e767a130.9c455",
         "order": 7,
@@ -1190,14 +1247,14 @@
         "y": 1680,
         "wires": [
             [
-                "4f90ca2f.121f64"
+                "e3e8f114.0795b"
             ]
         ]
     },
     {
-        "id": "189dd2ea.7b4cdd",
+        "id": "e356a4a.bc2a558",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Seconds to minutes & refresh state",
         "func": "var msg2 = {};\nmsg2.payload = msg.payload;\n\nvar msg3 = {};\n\nvar minutes = msg.payload /60;\nmsg.payload=minutes;\n\nif (msg.state > 0)\n{\n    if (flow.get(\"thermostat_mode\") != 'countdown')\n    {\n        flow.set(\"thermostat_mode\", \"countdown\");\n    }\n    else\n    {\n        msg2 = null;\n    }\n    \n    if (minutes < 1)\n    {\n        msg3.payload = \"Secondi rimanenti: \" + (minutes*60).toFixed(0);\n    }\n    else\n    {\n        msg3.payload = \"Minuti rimanenti: \" + minutes.toFixed(0);\n    }\n}\nelse if (msg2.payload == -1 || (msg2.payload == 0 && flow.get(\"countdown_preflag\") != 'off'))\n{\n    flow.set(\"thermostat_mode\", flow.get(\"countdown_followed_by\"));\n}\nelse\n{\n    msg2 = null;\n}\n\nflow.set(\"countdown_preflag\", msg.flag);\n\nreturn [msg, msg2, msg3];",
         "outputs": 3,
@@ -1208,20 +1265,20 @@
         "y": 1920,
         "wires": [
             [
-                "88bcdfff.3957e"
+                "bb3cc3ca.9642a"
             ],
             [
-                "ba87520a.8d356"
+                "3a1c4056.fd71a"
             ],
             [
-                "e521c6a0.99f7e8"
+                "66c9691b.d63478"
             ]
         ]
     },
     {
-        "id": "88bcdfff.3957e",
+        "id": "bb3cc3ca.9642a",
         "type": "ui_gauge",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Countdown Timer",
         "group": "e767a130.9c455",
         "order": 1,
@@ -1245,9 +1302,9 @@
         "wires": []
     },
     {
-        "id": "d84ca891.038eb8",
+        "id": "a6f16c.5d5d8e98",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Minutes to seconds",
         "func": "var seconds = msg.payload * 60;\n\nif(seconds==0) \n{\n    msg.payload= \"stop\";\n    return msg;\n}\n\nmsg.payload=\"{\\\"payload\\\": \\\"on\\\", \\\"timeout\\\":\" + seconds + \", \\\"warning\\\": 30}\"\n\nreturn msg;",
         "outputs": 1,
@@ -1258,14 +1315,14 @@
         "y": 1880,
         "wires": [
             [
-                "f5f5ff15.2be78"
+                "b693b186.25f61"
             ]
         ]
     },
     {
-        "id": "8bdc13ec.c0e47",
+        "id": "601e97b7.a9d318",
         "type": "ui_slider",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "label": "Minuti",
         "tooltip": "Timer avviato al rilascio",
@@ -1283,15 +1340,15 @@
         "y": 1840,
         "wires": [
             [
-                "d84ca891.038eb8",
-                "ad55c158.84b1"
+                "a6f16c.5d5d8e98",
+                "dc8ecafd.2056b8"
             ]
         ]
     },
     {
-        "id": "f4b93db5.b3",
+        "id": "146358ea.a1b987",
         "type": "ui_toast",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "position": "top left",
         "displayTime": "1",
         "highlight": "#e83a2c",
@@ -1307,9 +1364,9 @@
         "wires": []
     },
     {
-        "id": "f5f5ff15.2be78",
+        "id": "b693b186.25f61",
         "type": "mytimeout",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Timer 1-120 Minutes",
         "outtopic": "",
         "outsafe": "",
@@ -1326,17 +1383,17 @@
         "y": 1880,
         "wires": [
             [
-                "f4b93db5.b3"
+                "146358ea.a1b987"
             ],
             [
-                "189dd2ea.7b4cdd"
+                "e356a4a.bc2a558"
             ]
         ]
     },
     {
-        "id": "ad55c158.84b1",
+        "id": "dc8ecafd.2056b8",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Set min&max",
         "func": "var minuti = msg.payload;\n\nif(minuti==0) \n{\n    minuti=1;\n}\n\nmsg.ui_control = {\"min\":0,\"max\":minuti}\n\nreturn msg;",
         "outputs": 1,
@@ -1347,14 +1404,14 @@
         "y": 1800,
         "wires": [
             [
-                "88bcdfff.3957e"
+                "bb3cc3ca.9642a"
             ]
         ]
     },
     {
-        "id": "4f90ca2f.121f64",
+        "id": "e3e8f114.0795b",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Reset Slider",
         "func": "msg.payload = 0;\n\nreturn msg;",
         "outputs": 1,
@@ -1365,14 +1422,14 @@
         "y": 1680,
         "wires": [
             [
-                "8bdc13ec.c0e47"
+                "601e97b7.a9d318"
             ]
         ]
     },
     {
-        "id": "189d2233.b8a08e",
+        "id": "5b0d0cf.c059ef4",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "e767a130.9c455",
         "order": 8,
@@ -1391,15 +1448,15 @@
         "y": 1500,
         "wires": [
             [
-                "2b65cd98.9eb7c2",
-                "260da8ed.9e7718"
+                "fa178067.0ef11",
+                "df7585f3.52b3d8"
             ]
         ]
     },
     {
-        "id": "fc104ad2.457258",
+        "id": "f21ea4a8.3d7e28",
         "type": "ui_dropdown",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "label": "",
         "tooltip": "",
@@ -1438,15 +1495,15 @@
         "y": 1100,
         "wires": [
             [
-                "8c571bd2.941848",
-                "8c6cd373.782b1"
+                "52b5f34a.e5438c",
+                "e80beafb.960048"
             ]
         ]
     },
     {
-        "id": "8c571bd2.941848",
+        "id": "52b5f34a.e5438c",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Mode selection",
         "func": "switch (msg.payload){\ncase 'off':\n    flow.set(\"thermostat_mode\",\"off\")\n    return [msg,null,null,null]\n\ncase 'schedule':\n    msg.payload = {\"group\":{\"show\":[\"Cronotermostato_Programmazione\"],\"hide\":[\"Cronotermostato_Nest\"]}};\n    flow.set(\"thermostat_mode\",\"schedule\")\n    return [null,msg,null,null]\n\ncase 'countdown':\n    msg.payload = {\"group\":{\"show\":[\"Cronotermostato_Countdown\"],\"hide\":[\"Cronotermostato_Nest\"]}};\n    return [null,null,msg,null]\n\ncase 'manual':\n    flow.set(\"thermostat_mode\",\"manual\")\n    return [null,null,null,msg]\n}\n\nreturn [null,null,null,null];",
         "outputs": 4,
@@ -1457,22 +1514,22 @@
         "y": 1100,
         "wires": [
             [
-                "8e15672e.071e48",
-                "1900d9aa.dd0cc6"
+                "180c3495.1167cb",
+                "cef71c8c.a9bc5"
             ],
             [
-                "8e7011b6.a6068",
-                "4c3084c1.63fabc",
-                "1900d9aa.dd0cc6"
+                "634ced23.8751e4",
+                "a2f11a6d.ff7e28",
+                "cef71c8c.a9bc5"
             ],
             [
-                "2b65cd98.9eb7c2",
-                "69370ce3.b13474"
+                "fa178067.0ef11",
+                "2111533e.56fbec"
             ],
             [
-                "4c3084c1.63fabc",
-                "1900d9aa.dd0cc6",
-                "d98d27b3.9c32f8"
+                "a2f11a6d.ff7e28",
+                "cef71c8c.a9bc5",
+                "f90c64e4.b6bd58"
             ]
         ],
         "outputLabels": [
@@ -1483,9 +1540,9 @@
         ]
     },
     {
-        "id": "1a457ca3.42f853",
+        "id": "76d7a3ad.82706c",
         "type": "ui_text",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "317e9d9c.dea8e2",
         "order": 7,
         "width": 3,
@@ -1499,9 +1556,9 @@
         "wires": []
     },
     {
-        "id": "e1e384f5.ac4998",
+        "id": "548f9ce2.872cb4",
         "type": "ui_button",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "group": "317e9d9c.dea8e2",
         "order": 6,
@@ -1520,15 +1577,15 @@
         "y": 1200,
         "wires": [
             [
-                "2b65cd98.9eb7c2",
-                "8e7011b6.a6068"
+                "fa178067.0ef11",
+                "634ced23.8751e4"
             ]
         ]
     },
     {
-        "id": "3ca212ff.47e45e",
+        "id": "46acbaca.a27cb4",
         "type": "ui_dropdown",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "",
         "label": "",
         "tooltip": "",
@@ -1557,14 +1614,14 @@
         "y": 1140,
         "wires": [
             [
-                "b7e99ab0.7c2de8"
+                "f6e4894d.68e478"
             ]
         ]
     },
     {
-        "id": "283d7f5d.d32fe",
+        "id": "604038e5.65ef58",
         "type": "ui_text",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "group": "e767a130.9c455",
         "order": 3,
         "width": 2,
@@ -1578,66 +1635,66 @@
         "wires": []
     },
     {
-        "id": "260da8ed.9e7718",
+        "id": "df7585f3.52b3d8",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "RefreshNest",
         "links": [
-            "c787bb45.d39898"
+            "582b7fce.e50f6"
         ],
         "x": 875,
         "y": 1440,
         "wires": []
     },
     {
-        "id": "c787bb45.d39898",
+        "id": "582b7fce.e50f6",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "RefreshNest",
         "links": [
-            "260da8ed.9e7718",
-            "ba87520a.8d356"
+            "df7585f3.52b3d8",
+            "3a1c4056.fd71a"
         ],
         "x": 655,
         "y": 820,
         "wires": [
             [
-                "d47f4ead.40532"
+                "f8f19df4.f2fd7"
             ]
         ]
     },
     {
-        "id": "1c988bbe.c2a504",
+        "id": "d0e07eaf.acadd",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "StopCountdown",
         "links": [
-            "1900d9aa.dd0cc6"
+            "cef71c8c.a9bc5"
         ],
         "x": 255,
         "y": 1640,
         "wires": [
             [
-                "6f403c9c.068794"
+                "5021393b.a4a638"
             ]
         ]
     },
     {
-        "id": "1900d9aa.dd0cc6",
+        "id": "cef71c8c.a9bc5",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "StopCountdown",
         "links": [
-            "1c988bbe.c2a504"
+            "d0e07eaf.acadd"
         ],
         "x": 855,
         "y": 1080,
         "wires": []
     },
     {
-        "id": "e68143e6.0cde",
+        "id": "715a16df.299d68",
         "type": "inject",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Once only",
         "props": [
             {
@@ -1655,14 +1712,14 @@
         "y": 1840,
         "wires": [
             [
-                "f5f5ff15.2be78"
+                "b693b186.25f61"
             ]
         ]
     },
     {
-        "id": "69370ce3.b13474",
+        "id": "2111533e.56fbec",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "sync followed by",
         "func": "if (typeof (flow.get(\"countdown_followed_by\")) == 'undefined') \n{\n    flow.set(\"countdown_followed_by\",\"off\");\n}\n\nmsg.payload = flow.get(\"countdown_followed_by\");\n\nreturn msg;",
         "outputs": 1,
@@ -1673,14 +1730,14 @@
         "y": 1140,
         "wires": [
             [
-                "3ca212ff.47e45e"
+                "46acbaca.a27cb4"
             ]
         ]
     },
     {
-        "id": "b7e99ab0.7c2de8",
+        "id": "f6e4894d.68e478",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "store followed by",
         "func": "switch (msg.payload){\ncase 'off':\n    flow.set(\"countdown_followed_by\",\"off\")\n    return msg;\n\ncase 'schedule':\n    flow.set(\"countdown_followed_by\",\"schedule\")\n    return msg;\n}\n\nreturn msg;",
         "outputs": 1,
@@ -1691,14 +1748,14 @@
         "y": 1140,
         "wires": [
             [
-                "12aecf7.e64ee31"
+                "63502f69.e7ed8"
             ]
         ]
     },
     {
-        "id": "12aecf7.e64ee31",
+        "id": "63502f69.e7ed8",
         "type": "debug",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "followed_by_debug",
         "active": false,
         "tosidebar": true,
@@ -1713,9 +1770,9 @@
         "wires": []
     },
     {
-        "id": "8c6cd373.782b1",
+        "id": "e80beafb.960048",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Update setting button",
         "func": "var button_link = {};\nbutton_link.group = {};\n\nvar msg2 = {};\n\nswitch (msg.payload){\ncase 'off':\n    msg.ui_control = {\"icon\": \"\"};\n    msg.label = \"\";\n    msg.enabled = false;\n    button_link.group.show = [];\n    button_link.group.hide = [];\n    msg2.payload = \"\";\n    break;\ncase 'schedule':\n    msg.ui_control = {\"icon\": \"fa-calendar\"};\n    msg.label = \"Imposta programma\";\n    msg.enabled = true;\n    button_link.group.show = [\"Cronotermostato_Programmazione\"];\n    button_link.group.hide = [\"Cronotermostato_Nest\"];\n    msg2.payload = \"\";\n    break;\ncase 'countdown':\n    msg.ui_control = {\"icon\": \"timer\"};\n    msg.label = \"Imposta Countdown\";\n    msg.enabled = true;    \n    button_link.group.show = [\"Cronotermostato_Countdown\"];\n    button_link.group.hide = [\"Cronotermostato_Nest\"];\n    msg2 = null;\n    break;\ncase 'manual':\n    msg.ui_control = {\"icon\": \"\"};\n    msg.label = \"\";\n    msg.enabled = false;\n    button_link.group.show = [];\n    button_link.group.hide = [];\n    msg2.payload = \"(Ricordarsi di spegnere il termostato)\";\n    break;\n}\n\nflow.set(\"setting_link\", button_link);\nreturn [msg, msg2];",
         "outputs": 2,
@@ -1726,11 +1783,11 @@
         "y": 1220,
         "wires": [
             [
-                "e1e384f5.ac4998"
+                "548f9ce2.872cb4"
             ],
             [
-                "61cb5dbf.853984",
-                "c57ef1b2.e99e8"
+                "265b809.020228",
+                "266cc8e.7387c38"
             ]
         ],
         "outputLabels": [
@@ -1739,9 +1796,9 @@
         ]
     },
     {
-        "id": "d98d27b3.9c32f8",
+        "id": "f90c64e4.b6bd58",
         "type": "ui_toast",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "position": "top left",
         "displayTime": "1",
         "highlight": "#e83a2c",
@@ -1757,81 +1814,82 @@
         "wires": []
     },
     {
-        "id": "ba87520a.8d356",
+        "id": "3a1c4056.fd71a",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "RefreshNest",
         "links": [
-            "c787bb45.d39898"
+            "582b7fce.e50f6"
         ],
         "x": 1255,
         "y": 1920,
         "wires": []
     },
     {
-        "id": "a332e947.5fd3b8",
+        "id": "d14b2224.e583",
         "type": "link in",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set_infotext",
         "links": [
-            "e521c6a0.99f7e8",
-            "40dd2156.c19cc",
-            "61cb5dbf.853984"
+            "66c9691b.d63478",
+            "40dd5def.7dbcb4",
+            "265b809.020228"
         ],
         "x": 815,
         "y": 1600,
         "wires": [
             [
-                "1a457ca3.42f853"
+                "76d7a3ad.82706c"
             ]
         ]
     },
     {
-        "id": "e521c6a0.99f7e8",
+        "id": "66c9691b.d63478",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set_infotext",
         "links": [
-            "a332e947.5fd3b8"
+            "d14b2224.e583"
         ],
         "x": 1255,
         "y": 1960,
         "wires": []
     },
     {
-        "id": "40dd2156.c19cc",
+        "id": "40dd5def.7dbcb4",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set_infotext",
         "links": [
-            "a332e947.5fd3b8"
+            "d14b2224.e583"
         ],
         "x": 1095,
         "y": 420,
         "wires": []
     },
     {
-        "id": "224eceaf.322b02",
+        "id": "4014445.26c60bc",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "Show next hour temperature",
-        "func": "if (flow.get(\"thermostat_mode\") != \"schedule\") {\n    return null;\n}\n\nvar timing=global.get(\"timing\");\nvar nexthour = new Date(msg.time);\n\nvar fixed_temperature = timing[(nexthour.getDay()*24)+nexthour.getHours()];\n\nmsg.payload = \"Temperatura programmata per la prossima ora: \" + fixed_temperature + \"°\";\n\nreturn msg;",
+        "func": "if (flow.get(\"thermostat_mode\") != \"schedule\") {\n    return null;\n}\n\nlet timing=global.get(\"timing\");\nvar nexthour = new Date(msg.time);\n\nvar fixed_temperature = timing[(nexthour.getDay()*24)+nexthour.getHours()];\n\nmsg.payload = \"Temperatura programmata per la prossima ora: \" + fixed_temperature + \"°\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 940,
         "y": 420,
         "wires": [
             [
-                "40dd2156.c19cc"
+                "40dd5def.7dbcb4"
             ]
         ]
     },
     {
-        "id": "c57ef1b2.e99e8",
+        "id": "266cc8e.7387c38",
         "type": "moment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "time + 1",
         "topic": "",
         "input": "",
@@ -1849,26 +1907,26 @@
         "y": 420,
         "wires": [
             [
-                "224eceaf.322b02"
+                "4014445.26c60bc"
             ]
         ]
     },
     {
-        "id": "61cb5dbf.853984",
+        "id": "265b809.020228",
         "type": "link out",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set_infotext",
         "links": [
-            "a332e947.5fd3b8"
+            "d14b2224.e583"
         ],
         "x": 555,
         "y": 1240,
         "wires": []
     },
     {
-        "id": "de70b327.bcad5",
+        "id": "1583662b.eaa1ea",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set this",
         "info": "",
         "x": 130,
@@ -1876,9 +1934,9 @@
         "wires": []
     },
     {
-        "id": "2b4954e7.1292dc",
+        "id": "90b52d0f.173c8",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set this",
         "info": "",
         "x": 130,
@@ -1886,9 +1944,9 @@
         "wires": []
     },
     {
-        "id": "a0abdfdc.8f559",
+        "id": "f32ca0ec.42264",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set this",
         "info": "",
         "x": 1050,
@@ -1896,9 +1954,9 @@
         "wires": []
     },
     {
-        "id": "af7e58b1.72a7b8",
+        "id": "e2603d04.10a1e",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set this",
         "info": "",
         "x": 1050,
@@ -1906,9 +1964,9 @@
         "wires": []
     },
     {
-        "id": "c922c7c4.31a188",
+        "id": "6882e6f4.346418",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set this",
         "info": "",
         "x": 1330,
@@ -1916,23 +1974,23 @@
         "wires": []
     },
     {
-        "id": "30a36a0b.7f6f36",
+        "id": "81a71617.0969f8",
         "type": "ui_ui_control",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "ui_control on connect",
         "events": "connect",
         "x": 400,
         "y": 1280,
         "wires": [
             [
-                "5daa0460.60f83c"
+                "d3918875.9486b8"
             ]
         ]
     },
     {
-        "id": "5daa0460.60f83c",
+        "id": "d3918875.9486b8",
         "type": "function",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "hide groups",
         "func": "msg.payload = {\"group\":{\"hide\":[\"Cronotermostato_Programmazione\",\"Cronotermostato_Grafico\",\"Cronotermostato_Countdown\"],\"show\":[\"Cronotermostato_Nest\"]}}\n\nreturn msg;",
         "outputs": 1,
@@ -1943,14 +2001,14 @@
         "y": 1280,
         "wires": [
             [
-                "2b65cd98.9eb7c2"
+                "fa178067.0ef11"
             ]
         ]
     },
     {
-        "id": "e51a1cd3.4fb1d",
+        "id": "af7851fa.ee551",
         "type": "comment",
-        "z": "b53c1f70.8e70f",
+        "z": "c7e7982a.89e5f8",
         "name": "set your Timezone in these three nodes",
         "info": "",
         "x": 610,
@@ -1981,12 +2039,14 @@
         "id": "41108723.0bf848",
         "type": "server",
         "name": "Home Assistant",
-        "legacy": false,
+        "version": 2,
         "addon": true,
         "rejectUnauthorizedCerts": true,
         "ha_boolean": "y|yes|true|on|home|open",
         "connectionDelay": true,
-        "cacheJson": true
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30
     },
     {
         "id": "eaea6ba8.f76288",
@@ -2013,6 +2073,7 @@
         "type": "ui_tab",
         "name": "Cronotermostato",
         "icon": "dashboard",
+        "order": 1,
         "disabled": false,
         "hidden": false
     }
